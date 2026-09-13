@@ -1,0 +1,23 @@
+{
+  "input": [
+    "Python is a popular programming language used for web development, automation, data science, and machine learning.",
+    "A Python virtual environment isolates project dependencies so different applications can use different package versions.",
+    "Large language models generate text by predicting tokens based on patterns learned from massive training datasets.",
+    "Embedding models convert text into numerical vectors that can be compared using cosine similarity.",
+    "Semantic search retrieves documents based on meaning rather than exact keyword matching.",
+    "Vector databases store embeddings and allow efficient nearest-neighbor search over large document collections.",
+    "Sourdough bread is made using a fermented starter that gives the loaf a tangy flavor and chewy texture.",
+    "Tomato soup pairs well with grilled cheese sandwiches, especially on a cold day.",
+    "Mars is often called the red planet because iron oxide on its surface gives it a reddish appearance.",
+    "A telescope collects light from distant objects and helps astronomers observe stars, planets, and galaxies.",
+    "A piano produces sound when hammers strike strings inside the instrument.",
+    "Jazz music often includes improvisation, syncopated rhythms, and extended harmonies.",
+    "How do I keep Python package dependencies separate for each project?",
+    "What turns sentences into vectors for similarity search?",
+    "Find documents by meaning instead of matching exact words.",
+    "Which bread uses a fermented starter and tastes tangy?",
+    "Why does Mars look red?",
+    "What instrument helps people observe distant galaxies?",
+    "Which instrument makes sound by hitting strings with hammers?"
+  ]
+}

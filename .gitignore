@@ -1,0 +1,20 @@
+# Python / env
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / editor artifacts
+.DS_Store
+.Rhistory
+
+# Downloaded + engineered ADE Corpus V2 data (regenerate with:
+# python3 download_ade_corpus.py && python3 feature_engineering.py)
+# License unspecified on the HF dataset card; CMU restricts HuggingFace
+# datasets on CMU compute without approval — don't redistribute via this repo.
+data/ade_corpus_v2/
+
+# Working notes / course materials not meant for the shared team repo
+AMD Scenario 01.pdf
+AS01_Instruction.docx
+Technology_Use.md

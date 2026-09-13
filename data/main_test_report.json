@@ -1,0 +1,606 @@
+{
+  "root_dir": "/Users/skingsle/Documents/llmbox/course/95864/assignments/as01_v02",
+  "src_dir": "/Users/skingsle/Documents/llmbox/course/95864/assignments/as01_v02/src",
+  "data_dir": "/Users/skingsle/Documents/llmbox/course/95864/assignments/as01_v02/data",
+  "tests": {
+    "import tokenizers.py": {
+      "status": "PASS",
+      "result": {
+        "type": "module",
+        "name": "project_tokenizers",
+        "file": "/Users/skingsle/Documents/llmbox/course/95864/assignments/as01_v02/src/tokenizers.py"
+      }
+    },
+    "import embedders_no_ai.py": {
+      "status": "PASS",
+      "result": {
+        "type": "module",
+        "name": "project_embedders_no_ai",
+        "file": "/Users/skingsle/Documents/llmbox/course/95864/assignments/as01_v02/src/embedders_no_ai.py"
+      }
+    },
+    "import embedders_aimodel.py": {
+      "status": "PASS",
+      "result": {
+        "type": "module",
+        "name": "project_embedders_aimodel",
+        "file": "/Users/skingsle/Documents/llmbox/course/95864/assignments/as01_v02/src/embedders_aimodel.py"
+      }
+    },
+    "import similarity_metrics.py": {
+      "status": "PASS",
+      "result": {
+        "type": "module",
+        "name": "project_similarity_metrics",
+        "file": "/Users/skingsle/Documents/llmbox/course/95864/assignments/as01_v02/src/similarity_metrics.py"
+      }
+    },
+    "import embeddinggemma.py": {
+      "status": "PASS",
+      "result": {
+        "type": "module",
+        "name": "project_embeddinggemma",
+        "file": "/Users/skingsle/Documents/llmbox/course/95864/assignments/as01_v02/src/embeddinggemma.py"
+      }
+    },
+    "patch tokenizers.py runtime globals": {
+      "status": "PASS",
+      "result": {
+        "type": "TokenizerManager",
+        "repr": "<project_tokenizers.TokenizerManager object at 0x10131d2b0>"
+      }
+    },
+    "patch embedders_no_ai.py runtime globals": {
+      "status": "PASS",
+      "result": {
+        "type": "BasicEmbeddingManager",
+        "repr": "<project_embedders_no_ai.BasicEmbeddingManager object at 0x105d156a0>"
+      }
+    },
+    "patch similarity_metrics.py runtime globals": {
+      "status": "PASS",
+      "result": {
+        "type": "EmbeddingMetrics",
+        "repr": "<project_similarity_metrics.EmbeddingMetrics object at 0x105d15160>"
+      }
+    },
+    "tokenize_words on sample document": {
+      "status": "PASS",
+      "result": {
+        "sample_text": "Python is a popular programming language used for web development, automation, data science, and machine learning.",
+        "first_15_tokens": [
+          "python",
+          "is",
+          "a",
+          "popular",
+          "programming",
+          "language",
+          "used",
+          "for",
+          "web",
+          "development",
+          "automation",
+          "data",
+          "science",
+          "and",
+          "machine"
+        ],
+        "token_count": 16
+      }
+    },
+    "tokenize_sentences on sample text": {
+      "status": "PASS",
+      "result": {
+        "sample_text": "Python is useful. Embeddings are vectors! Does this split?",
+        "sentence_units": [
+          [
+            "python",
+            "is",
+            "useful"
+          ],
+          [
+            "embeddings",
+            "are",
+            "vectors"
+          ],
+          [
+            "does",
+            "this",
+            "split"
+          ]
+        ],
+        "sentence_count": 3
+      }
+    },
+    "chunk_fixed_size on sample document": {
+      "status": "PASS",
+      "result": {
+        "sample_text": "Python is a popular programming language used for web development, automation, data science, and machine learning.",
+        "chunks": [
+          [
+            "python",
+            "is",
+            "a",
+            "popular",
+            "programming"
+          ],
+          [
+            "language",
+            "used",
+            "for",
+            "web",
+            "development"
+          ],
+          [
+            "automation",
+            "data",
+            "science",
+            "and",
+            "machine"
+          ],
+          [
+            "learning"
+          ]
+        ],
+        "chunk_count": 4
+      }
+    },
+    "BOW embed_corpus": {
+      "status": "PASS",
+      "result": {
+        "embedding_count": 19,
+        "vocab_size": 161,
+        "first_embedding_nonzero_terms": 16,
+        "extra": {}
+      }
+    },
+    "TF-IDF embed_corpus": {
+      "status": "PASS",
+      "result": {
+        "embedding_count": 19,
+        "vocab_size": 161,
+        "idf_count": 161,
+        "first_embedding_nonzero_terms": 16
+      }
+    },
+    "sparse TF-IDF similarity_matrix": {
+      "status": "PASS",
+      "result": {
+        "matrix_size": [
+          12,
+          12
+        ],
+        "summary": {
+          "n_pairs": 66,
+          "mean_similarity": 0.03169393088178726,
+          "median_similarity": 0.021972333464888534,
+          "min_similarity": 0.0,
+          "min_pair": [
+            "doc_python_1",
+            "doc_llm_2"
+          ],
+          "max_similarity": 0.15787655534042253,
+          "max_pair": [
+            "doc_food_1",
+            "doc_space_1"
+          ]
+        }
+      }
+    },
+    "TF-IDF semantic-ish retrieval test": {
+      "status": "PASS",
+      "result": {
+        "query_count": 7,
+        "hits_at_1": 7,
+        "hits_at_3": 7,
+        "accuracy_at_1": 1.0,
+        "accuracy_at_3": 1.0,
+        "rows": [
+          {
+            "query_id": "q_python_env",
+            "query_text": "How do I keep Python package dependencies separate for each project?",
+            "expected_doc_ids": [
+              "doc_python_2"
+            ],
+            "top3": [
+              {
+                "doc_id": "doc_python_2",
+                "topic": "python",
+                "score": 0.24415496461529618
+              },
+              {
+                "doc_id": "doc_python_1",
+                "topic": "python",
+                "score": 0.10997929151995402
+              },
+              {
+                "doc_id": "doc_llm_1",
+                "topic": "llm",
+                "score": 0.0
+              }
+            ],
+            "hit_at_1": true,
+            "hit_at_3": true
+          },
+          {
+            "query_id": "q_embeddings",
+            "query_text": "What turns sentences into vectors for similarity search?",
+            "expected_doc_ids": [
+              "doc_llm_2",
+              "doc_search_2"
+            ],
+            "top3": [
+              {
+                "doc_id": "doc_llm_2",
+                "topic": "llm",
+                "score": 0.2628754263112395
+              },
+              {
+                "doc_id": "doc_search_1",
+                "topic": "semantic_search",
+                "score": 0.07811347305492178
+              },
+              {
+                "doc_id": "doc_search_2",
+                "topic": "semantic_search",
+                "score": 0.06902378285070875
+              }
+            ],
+            "hit_at_1": true,
+            "hit_at_3": true
+          },
+          {
+            "query_id": "q_semantic_search",
+            "query_text": "Find documents by meaning instead of matching exact words.",
+            "expected_doc_ids": [
+              "doc_search_1"
+            ],
+            "top3": [
+              {
+                "doc_id": "doc_search_1",
+                "topic": "semantic_search",
+                "score": 0.35021321047987714
+              },
+              {
+                "doc_id": "doc_llm_1",
+                "topic": "llm",
+                "score": 0.06026905144397305
+              },
+              {
+                "doc_id": "doc_python_1",
+                "topic": "python",
+                "score": 0.0
+              }
+            ],
+            "hit_at_1": true,
+            "hit_at_3": true
+          },
+          {
+            "query_id": "q_bread",
+            "query_text": "Which bread uses a fermented starter and tastes tangy?",
+            "expected_doc_ids": [
+              "doc_food_1"
+            ],
+            "top3": [
+              {
+                "doc_id": "doc_food_1",
+                "topic": "food",
+                "score": 0.4194895577440362
+              },
+              {
+                "doc_id": "doc_space_2",
+                "topic": "space",
+                "score": 0.11529589854464829
+              },
+              {
+                "doc_id": "doc_python_1",
+                "topic": "python",
+                "score": 0.07173914788578391
+              }
+            ],
+            "hit_at_1": true,
+            "hit_at_3": true
+          },
+          {
+            "query_id": "q_mars",
+            "query_text": "Why does Mars look red?",
+            "expected_doc_ids": [
+              "doc_space_1"
+            ],
+            "top3": [
+              {
+                "doc_id": "doc_space_1",
+                "topic": "space",
+                "score": 0.1851759562830406
+              },
+              {
+                "doc_id": "doc_python_1",
+                "topic": "python",
+                "score": 0.0
+              },
+              {
+                "doc_id": "doc_python_2",
+                "topic": "python",
+                "score": 0.0
+              }
+            ],
+            "hit_at_1": true,
+            "hit_at_3": true
+          },
+          {
+            "query_id": "q_telescope",
+            "query_text": "What instrument helps people observe distant galaxies?",
+            "expected_doc_ids": [
+              "doc_space_2"
+            ],
+            "top3": [
+              {
+                "doc_id": "doc_space_2",
+                "topic": "space",
+                "score": 0.36936967377968727
+              },
+              {
+                "doc_id": "doc_music_1",
+                "topic": "music",
+                "score": 0.08926577035578842
+              },
+              {
+                "doc_id": "doc_python_1",
+                "topic": "python",
+                "score": 0.0
+              }
+            ],
+            "hit_at_1": true,
+            "hit_at_3": true
+          },
+          {
+            "query_id": "q_piano",
+            "query_text": "Which instrument makes sound by hitting strings with hammers?",
+            "expected_doc_ids": [
+              "doc_music_1"
+            ],
+            "top3": [
+              {
+                "doc_id": "doc_music_1",
+                "topic": "music",
+                "score": 0.3693754819911412
+              },
+              {
+                "doc_id": "doc_food_2",
+                "topic": "food",
+                "score": 0.08471339211897504
+              },
+              {
+                "doc_id": "doc_llm_1",
+                "topic": "llm",
+                "score": 0.06283531494898617
+              }
+            ],
+            "hit_at_1": true,
+            "hit_at_3": true
+          }
+        ]
+      }
+    },
+    "embedders_aimodel.py API shape": {
+      "status": "PASS",
+      "result": {
+        "has_EmbeddingAIManager": true,
+        "has_embed_corpus_sentence_transformers": true,
+        "note": "Not loading external sentence-transformers model in default test."
+      }
+    },
+    "embeddinggemma.py parse helpers": {
+      "status": "PASS",
+      "result": {
+        "parsed_text_count": 19,
+        "first_text": "Python is a popular programming language used for web development, automation, data science, and machine learning.",
+        "parse_single": [
+          "hello"
+        ],
+        "parse_many": [
+          "hello",
+          "world"
+        ]
+      }
+    },
+    "REAL EmbeddingGemma model encode": {
+      "status": "SKIPPED",
+      "reason": "Run with --run-gemma to load the actual model."
+    }
+  },
+  "retrieval_results": {
+    "tfidf_sparse": {
+      "query_count": 7,
+      "hits_at_1": 7,
+      "hits_at_3": 7,
+      "accuracy_at_1": 1.0,
+      "accuracy_at_3": 1.0,
+      "rows": [
+        {
+          "query_id": "q_python_env",
+          "query_text": "How do I keep Python package dependencies separate for each project?",
+          "expected_doc_ids": [
+            "doc_python_2"
+          ],
+          "top3": [
+            {
+              "doc_id": "doc_python_2",
+              "topic": "python",
+              "score": 0.24415496461529618
+            },
+            {
+              "doc_id": "doc_python_1",
+              "topic": "python",
+              "score": 0.10997929151995402
+            },
+            {
+              "doc_id": "doc_llm_1",
+              "topic": "llm",
+              "score": 0.0
+            }
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true
+        },
+        {
+          "query_id": "q_embeddings",
+          "query_text": "What turns sentences into vectors for similarity search?",
+          "expected_doc_ids": [
+            "doc_llm_2",
+            "doc_search_2"
+          ],
+          "top3": [
+            {
+              "doc_id": "doc_llm_2",
+              "topic": "llm",
+              "score": 0.2628754263112395
+            },
+            {
+              "doc_id": "doc_search_1",
+              "topic": "semantic_search",
+              "score": 0.07811347305492178
+            },
+            {
+              "doc_id": "doc_search_2",
+              "topic": "semantic_search",
+              "score": 0.06902378285070875
+            }
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true
+        },
+        {
+          "query_id": "q_semantic_search",
+          "query_text": "Find documents by meaning instead of matching exact words.",
+          "expected_doc_ids": [
+            "doc_search_1"
+          ],
+          "top3": [
+            {
+              "doc_id": "doc_search_1",
+              "topic": "semantic_search",
+              "score": 0.35021321047987714
+            },
+            {
+              "doc_id": "doc_llm_1",
+              "topic": "llm",
+              "score": 0.06026905144397305
+            },
+            {
+              "doc_id": "doc_python_1",
+              "topic": "python",
+              "score": 0.0
+            }
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true
+        },
+        {
+          "query_id": "q_bread",
+          "query_text": "Which bread uses a fermented starter and tastes tangy?",
+          "expected_doc_ids": [
+            "doc_food_1"
+          ],
+          "top3": [
+            {
+              "doc_id": "doc_food_1",
+              "topic": "food",
+              "score": 0.4194895577440362
+            },
+            {
+              "doc_id": "doc_space_2",
+              "topic": "space",
+              "score": 0.11529589854464829
+            },
+            {
+              "doc_id": "doc_python_1",
+              "topic": "python",
+              "score": 0.07173914788578391
+            }
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true
+        },
+        {
+          "query_id": "q_mars",
+          "query_text": "Why does Mars look red?",
+          "expected_doc_ids": [
+            "doc_space_1"
+          ],
+          "top3": [
+            {
+              "doc_id": "doc_space_1",
+              "topic": "space",
+              "score": 0.1851759562830406
+            },
+            {
+              "doc_id": "doc_python_1",
+              "topic": "python",
+              "score": 0.0
+            },
+            {
+              "doc_id": "doc_python_2",
+              "topic": "python",
+              "score": 0.0
+            }
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true
+        },
+        {
+          "query_id": "q_telescope",
+          "query_text": "What instrument helps people observe distant galaxies?",
+          "expected_doc_ids": [
+            "doc_space_2"
+          ],
+          "top3": [
+            {
+              "doc_id": "doc_space_2",
+              "topic": "space",
+              "score": 0.36936967377968727
+            },
+            {
+              "doc_id": "doc_music_1",
+              "topic": "music",
+              "score": 0.08926577035578842
+            },
+            {
+              "doc_id": "doc_python_1",
+              "topic": "python",
+              "score": 0.0
+            }
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true
+        },
+        {
+          "query_id": "q_piano",
+          "query_text": "Which instrument makes sound by hitting strings with hammers?",
+          "expected_doc_ids": [
+            "doc_music_1"
+          ],
+          "top3": [
+            {
+              "doc_id": "doc_music_1",
+              "topic": "music",
+              "score": 0.3693754819911412
+            },
+            {
+              "doc_id": "doc_food_2",
+              "topic": "food",
+              "score": 0.08471339211897504
+            },
+            {
+              "doc_id": "doc_llm_1",
+              "topic": "llm",
+              "score": 0.06283531494898617
+            }
+          ],
+          "hit_at_1": true,
+          "hit_at_3": true
+        }
+      ]
+    }
+  }
+}

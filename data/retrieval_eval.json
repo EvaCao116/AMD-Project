@@ -1,0 +1,123 @@
+{
+  "documents": [
+    {
+      "id": "doc_python_1",
+      "topic": "python",
+      "text": "Python is a popular programming language used for web development, automation, data science, and machine learning."
+    },
+    {
+      "id": "doc_python_2",
+      "topic": "python",
+      "text": "A Python virtual environment isolates project dependencies so different applications can use different package versions."
+    },
+    {
+      "id": "doc_llm_1",
+      "topic": "llm",
+      "text": "Large language models generate text by predicting tokens based on patterns learned from massive training datasets."
+    },
+    {
+      "id": "doc_llm_2",
+      "topic": "llm",
+      "text": "Embedding models convert text into numerical vectors that can be compared using cosine similarity."
+    },
+    {
+      "id": "doc_search_1",
+      "topic": "semantic_search",
+      "text": "Semantic search retrieves documents based on meaning rather than exact keyword matching."
+    },
+    {
+      "id": "doc_search_2",
+      "topic": "semantic_search",
+      "text": "Vector databases store embeddings and allow efficient nearest-neighbor search over large document collections."
+    },
+    {
+      "id": "doc_food_1",
+      "topic": "food",
+      "text": "Sourdough bread is made using a fermented starter that gives the loaf a tangy flavor and chewy texture."
+    },
+    {
+      "id": "doc_food_2",
+      "topic": "food",
+      "text": "Tomato soup pairs well with grilled cheese sandwiches, especially on a cold day."
+    },
+    {
+      "id": "doc_space_1",
+      "topic": "space",
+      "text": "Mars is often called the red planet because iron oxide on its surface gives it a reddish appearance."
+    },
+    {
+      "id": "doc_space_2",
+      "topic": "space",
+      "text": "A telescope collects light from distant objects and helps astronomers observe stars, planets, and galaxies."
+    },
+    {
+      "id": "doc_music_1",
+      "topic": "music",
+      "text": "A piano produces sound when hammers strike strings inside the instrument."
+    },
+    {
+      "id": "doc_music_2",
+      "topic": "music",
+      "text": "Jazz music often includes improvisation, syncopated rhythms, and extended harmonies."
+    }
+  ],
+  "queries": [
+    {
+      "id": "q_python_env",
+      "text": "How do I keep Python package dependencies separate for each project?",
+      "expected_topic": "python",
+      "expected_doc_ids": [
+        "doc_python_2"
+      ]
+    },
+    {
+      "id": "q_embeddings",
+      "text": "What turns sentences into vectors for similarity search?",
+      "expected_topic": "llm",
+      "expected_doc_ids": [
+        "doc_llm_2",
+        "doc_search_2"
+      ]
+    },
+    {
+      "id": "q_semantic_search",
+      "text": "Find documents by meaning instead of matching exact words.",
+      "expected_topic": "semantic_search",
+      "expected_doc_ids": [
+        "doc_search_1"
+      ]
+    },
+    {
+      "id": "q_bread",
+      "text": "Which bread uses a fermented starter and tastes tangy?",
+      "expected_topic": "food",
+      "expected_doc_ids": [
+        "doc_food_1"
+      ]
+    },
+    {
+      "id": "q_mars",
+      "text": "Why does Mars look red?",
+      "expected_topic": "space",
+      "expected_doc_ids": [
+        "doc_space_1"
+      ]
+    },
+    {
+      "id": "q_telescope",
+      "text": "What instrument helps people observe distant galaxies?",
+      "expected_topic": "space",
+      "expected_doc_ids": [
+        "doc_space_2"
+      ]
+    },
+    {
+      "id": "q_piano",
+      "text": "Which instrument makes sound by hitting strings with hammers?",
+      "expected_topic": "music",
+      "expected_doc_ids": [
+        "doc_music_1"
+      ]
+    }
+  ]
+}

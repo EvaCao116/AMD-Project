@@ -31,7 +31,9 @@ SEVERE_KEYWORDS = [
 ]
 
 DOSAGE_PATTERN = re.compile(
-    r"(?P<value>\d+(?:\.\d+)?)\s*(?P<unit>mg/m2|mg/kg|mcg|mg|g|ml|iu|units?)",
+    r"(?P<value>\d+(?:\.\d+)?)"
+    r"[\s-]*"
+    r"(?P<unit>mg/m2|gm/m2|mg/kg|micro\s*g(?:/(?:kg|m2|g))?|mcg|mg|gm|g|ml|ui|iu|units?|u)\b",
     flags=re.IGNORECASE,
 )
 
@@ -73,9 +75,12 @@ def engineer_drug_dosage_relation() -> pd.DataFrame:
         match = DOSAGE_PATTERN.search(dosage_text)
         if not match:
             return pd.Series({"dose_value": None, "dose_unit": None})
+        unit = re.sub(r"\s+", "", match.group("unit")).lower()
+        if unit.startswith("gm"):
+            unit = "g" + unit[2:]          # normalize "gm" -> "g", "gm/m2" -> "g/m2"
         return pd.Series({
             "dose_value": float(match.group("value")),
-            "dose_unit": match.group("unit").lower(),
+            "dose_unit": unit,
         })
 
     parsed = df["dosage"].apply(parse_dose)

@@ -1,0 +1,16 @@
+# Core data / feature engineering / profiling (download_ade_corpus.py,
+# feature_engineering.py, data_profiling.py)
+datasets==5.0.1
+pandas==3.0.5
+matplotlib==3.11.2
+
+# Hugging Face model downloads (downloader.py)
+huggingface_hub==1.31.0
+python-dotenv==1.2.3
+
+# Tokenization / embedding / similarity experiments (src/*, main_test.py)
+# Not pinned to an exact tested version here — install and record the
+# resolved versions with `pip freeze` after your first successful run.
+sentence-transformers>=3.0
+transformers>=4.40
+torch>=2.2

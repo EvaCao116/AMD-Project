@@ -1,0 +1,50 @@
+{
+  "tokenizer": "dmis-lab/biobert-base-cased-v1.1",
+  "embedding_model": "pritamdeka/S-BioBert-snli-multinli-stsb",
+  "n_per_class": 300,
+  "seed": 42,
+  "tokenizer_stats_classification": {
+    "n_texts": 600,
+    "mean_token_len": 34.30166666666667,
+    "median_token_len": 32.0,
+    "min_token_len": 6,
+    "max_token_len": 104,
+    "mean_unk_per_text": 0.0,
+    "pct_texts_with_unk": 0.0
+  },
+  "similarity_classification": {
+    "within_class_0_mean": 0.20794856548309326,
+    "within_class_0_std": 0.10553035140037537,
+    "within_class_1_mean": 0.33320555090904236,
+    "within_class_1_std": 0.10198838263750076,
+    "across_class_mean": 0.24824708700180054,
+    "across_class_std": 0.10613208264112473,
+    "separation_gap": 0.022329986095428467
+  },
+  "pca_classification": {
+    "explained_variance_ratio": [
+      0.043887909501791,
+      0.037408795207738876
+    ]
+  },
+  "severity_full_config_counts": {
+    "False": 6380,
+    "True": 441
+  },
+  "severity_sample_size_per_class": 150,
+  "similarity_severity": {
+    "within_class_0_mean": 0.3272446393966675,
+    "within_class_0_std": 0.10134422779083252,
+    "within_class_1_mean": 0.34083959460258484,
+    "within_class_1_std": 0.10562824457883835,
+    "across_class_mean": 0.32278865575790405,
+    "across_class_std": 0.10017736256122589,
+    "separation_gap": 0.0112534761428833
+  },
+  "pca_severity": {
+    "explained_variance_ratio": [
+      0.0480414554476738,
+      0.04506603628396988
+    ]
+  }
+}

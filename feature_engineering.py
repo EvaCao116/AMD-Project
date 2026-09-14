@@ -7,9 +7,6 @@ New features:
   - drug_ade_relation: drug_effect_char_distance (numeric), is_severe_effect (binary)
   - drug_dosage_relation: dose_value (numeric), dose_unit (categorical)
   - classification: text_length_words (numeric)
-
-This script only computes the features and prints descriptive stats.
-Interpretation / write-up for the assignment memo is left to the student.
 """
 
 import json
@@ -98,6 +95,49 @@ def print_summary(name: str, df: pd.DataFrame, new_cols: list[str]) -> None:
             print(df[col].value_counts(dropna=False))
 
 
+def build_feature_documentation_table() -> pd.DataFrame:
+    """Structural metadata for each engineered feature.
+    """
+    rows = [
+        {
+            "new_feature": "text_length_words",
+            "source_feature(s)": "text",
+            "how_created": "Count of whitespace-separated tokens (str.split().str.len())",
+            "data_type": "numeric (int)",
+            "why_useful": "Cheap stand-in for text length, which may correlate with complexity or information density. Useful for stratification/QA variable downstream.",
+        },
+        {
+            "new_feature": "drug_effect_char_distance",
+            "source_feature(s)": "indexes.drug.end_char, indexes.effect.start_char",
+            "how_created": "Absolute difference between the first drug span's end offset and the first effect span's start offset",
+            "data_type": "numeric (float, nullable)",
+            "why_useful": "Rough proxy for the proximity of the drug and effect mentions in the text, which may correlate with the likelihood of a true causal relationship.",
+        },
+        {
+            "new_feature": "is_severe_effect",
+            "source_feature(s)": "effect",
+            "how_created": "Boolean flag: true if the effect text (lowercased) contains any of a fixed list of severity keywords",
+            "data_type": "binary (bool)",
+            "why_useful": "Collapses the effect text into a simple binary label for downstream analysis, e.g. to stratify or filter for severe vs. non-severe effects.",
+        },
+        {
+            "new_feature": "dose_value",
+            "source_feature(s)": "dosage",
+            "how_created": "Regex-extracted leading numeric value paired with a recognized unit token; null if no recognized pattern matches",
+            "data_type": "numeric (float, nullable)",
+            "why_useful": "Turns the free-text dosage into a numeric value for downstream analysis, e.g. to stratify or filter by dose.",
+        },
+        {
+            "new_feature": "dose_unit",
+            "source_feature(s)": "dosage",
+            "how_created": "Regex-extracted unit token accompanying the parsed dose value, normalized to lowercase (e.g. 'gm/m2' -> 'g/m2'); null if no recognized pattern matches",
+            "data_type": "categorical (string, nullable)",
+            "why_useful": "Provides the unit of the parsed dose value for downstream analysis, e.g. to stratify or filter by unit type.",
+        },
+    ]
+    return pd.DataFrame(rows)
+
+
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -118,6 +158,11 @@ def main() -> None:
     print_summary("classification", cls_df, ["text_length_words"])
     print_summary("drug_ade_relation", ade_df, ["drug_effect_char_distance", "is_severe_effect"])
     print_summary("drug_dosage_relation", dose_df, ["dose_value", "dose_unit"])
+
+    feature_table = build_feature_documentation_table()
+    feature_table.to_csv(OUT_DIR / "feature_documentation_table.csv", index=False)
+    print("\n=== Feature documentation table ===")
+    print(feature_table.to_string(index=False))
 
     print("\nEngineered files written to:", OUT_DIR.resolve())
 

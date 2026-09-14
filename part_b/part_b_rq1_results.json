@@ -1,0 +1,42 @@
+{
+  "tokenizer": "dmis-lab/biobert-base-cased-v1.1",
+  "embedding_model": "pritamdeka/S-BioBert-snli-multinli-stsb",
+  "seed": 42,
+  "length_median_words": 17,
+  "distance_median_chars": 56,
+  "length_experiment": {
+    "short_le_17_words": {
+      "n_class0": 166,
+      "n_class1": 113,
+      "within_class0_mean": 0.18101587891578674,
+      "within_class1_mean": 0.3182544410228729,
+      "across_class_mean": 0.22138458490371704,
+      "separation_gap": 0.028250575065612793
+    },
+    "long_gt_17_words": {
+      "n_class0": 134,
+      "n_class1": 187,
+      "within_class0_mean": 0.24493417143821716,
+      "within_class1_mean": 0.34869226813316345,
+      "across_class_mean": 0.27836868166923523,
+      "separation_gap": 0.018444538116455078
+    }
+  },
+  "distance_experiment": {
+    "near_le_56_chars": {
+      "n_bucket": 200,
+      "n_reference_non_ade": 300,
+      "mean_similarity_to_non_ade": 0.24424141645431519,
+      "std_similarity_to_non_ade": 0.10512274503707886
+    },
+    "far_gt_56_chars": {
+      "n_bucket": 200,
+      "n_reference_non_ade": 300,
+      "mean_similarity_to_non_ade": 0.25073179602622986,
+      "std_similarity_to_non_ade": 0.10390205681324005
+    },
+    "near_available": 3425,
+    "far_available": 3359,
+    "gap_far_minus_near": 0.006490379571914673
+  }
+}
